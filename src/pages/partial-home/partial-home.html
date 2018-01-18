@@ -1,0 +1,20 @@
+<ion-header no-shadow no-border>
+  <ion-navbar color="#66666">
+    <button ion-button menuToggle color="yellow">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    
+    <super-tabs style="height: 100%" [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" toolbarBackground="dark" indicatorColor="yellow">
+      <super-tab [root]="page1" [title]="showTitles? '  NEW  ' : ''" ></super-tab>
+      <super-tab [root]="page2" [title]="showTitles? 'Featured' : ''" ></super-tab>
+      <super-tab [root]="page3" [title]="showTitles? 'Collections' : ''"></super-tab>
+    </super-tabs>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<!--
+  Generated template for the UserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>User</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item *ngIf="data">
+            <ion-avatar item-left>
+                <img src = "{{data.profile_image.medium}}" alt = "userimage">
+            </ion-avatar>
+            <h2> {{data.name}}</h2>
+            <p> {{data.location}} </p>
+    </ion-item>
+    <ion-grid *ngIf="data">
+        <ion-row>
+            <ion-col col-4  *ngFor = "let photo of data.photos">
+                <ion-card>
+                    <img src = "{{photo.urls.regular}}" alt = "">
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

@@ -1,0 +1,38 @@
+<!--
+  Generated template for the WallpaperPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hide-nav-bar="true">
+    <ion-title>Wallpaper</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card *ngIf="data" hide-nav-bar="true">
+        <ion-item>
+            <ion-avatar item-left>
+                <img src = "{{data.user.profile_image.small}}" alt = "userimage">
+            </ion-avatar>
+            <h2> {{data.user.username}}</h2>
+            <p> {{data.user.location}} </p>
+        </ion-item>
+        <img src = "{{data.urls.regular}}" alt = "">
+        <ion-item>
+            <ion-icon name = "heart" color = "danger" item-left> </ion-icon>
+            <h2> {{data.likes}} </h2>
+            <p item-right> {{data.updated_at}} </p>
+        </ion-item>
+    </ion-card>
+    <progress-bar [progress]="progress"></progress-bar>
+    <button ion-button (click)="download()">Download</button>
+    <button ion-button (click)="setWallpaper()">Set Wallpaper</button>
+        <button ion-button (click)="share()">Share</button>
+
+
+</ion-content>

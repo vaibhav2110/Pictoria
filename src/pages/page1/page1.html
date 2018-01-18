@@ -1,0 +1,27 @@
+
+<ion-content header-scroller>
+    <ion-spinner [hidden]="data">Loading</ion-spinner>
+   <ion-card *ngFor = "let image of data" >
+        <ion-item (click)="getUsers($event, image.user.username)">
+            <ion-avatar item-left>
+                <img src = "{{image.user.profile_image.small}}" alt = "userimage">
+            </ion-avatar>
+            <h2> {{image.user.username}}</h2>
+            <p> {{image.user.location}} </p>
+        </ion-item>
+        <img src = "{{image.urls.regular}}" alt = "" (click)="selected($event, image)">
+        <ion-item>
+            <ion-icon name = "heart" color = "danger" item-left> </ion-icon>
+            <h2> {{image.likes}} </h2>
+            <p item-right> {{image.updated_at | date: 'dd/MM/yyyy'}} </p>
+        </ion-item>
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+   
+ </ion-infinite-scroll>
+
+</ion-content>

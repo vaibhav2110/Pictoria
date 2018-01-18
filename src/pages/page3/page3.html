@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-card *ngFor = "let image of data" (click)="selected($event, image)">
+        <ion-item>
+            
+            <h2> {{image.title}}</h2>
+            <p> {{image.description}} </p>
+        </ion-item>
+        <img src = "{{image.cover_photo.urls.regular}}" alt = "">
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>
