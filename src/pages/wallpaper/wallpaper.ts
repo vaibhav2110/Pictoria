@@ -121,7 +121,7 @@ export class WallpaperPage {
                 console.log('Shared');
             })
             .catch((err)=>{
-                console.log('boooor me');
+                console.log('error');
             });
         });
   
