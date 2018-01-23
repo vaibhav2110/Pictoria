@@ -151,7 +151,6 @@ export class WallpaperPage {
                 console.log('Shared');
             })
             .catch((err)=>{
-                this.spinning = false;
                 console.log('error');
             });
         });
