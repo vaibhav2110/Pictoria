@@ -152,7 +152,7 @@ export class WallpaperPage {
             })
             .catch((err)=>{
                 this.spinning = false;
-                console.log('Failed');
+                console.log('error');
             });
         });
   
