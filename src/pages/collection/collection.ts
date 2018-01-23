@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unsplashprovider';
 import { WallpaperPage } from '../wallpaper/wallpaper';
 import { UserPage } from '../user/user';
+import { StatusBar } from '@ionic-native/status-bar';
+
 
 /**
  * Generated class for the CollectionPage page.
@@ -25,11 +27,13 @@ export class CollectionPage {
     rootNavCtrl: NavController;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private Unsplashprovider: UnsplashproviderProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private Unsplashprovider: UnsplashproviderProvider, private statusBar: StatusBar) {
       this.rootNavCtrl = navParams.get('root');
   }
     
     ngOnInit(){
+                this.statusBar.show();
+
         this.data = this.navParams.get('image');
         console.log(this.data.id);
         this.Unsplashprovider.getCollection(this.data.id, this.pg)
@@ -56,6 +60,7 @@ export class CollectionPage {
         });
     }
     getUsers(event, username){
+        this.navCtrl.push(UserPage);
         this.rootNavCtrl.push(UserPage, {
             username
         });

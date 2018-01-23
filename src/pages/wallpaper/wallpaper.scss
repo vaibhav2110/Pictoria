@@ -1,14 +1,167 @@
 page-wallpaper {
+    ion-header{
+        background: transparent !important;
+        top-padding: 0;
+        ion-navbar{
+            background: transparent !important;
+            position: fixed;
+        }
+        
+    }
+    img{
+        width : 100%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .container{
+        position: relative;
+        margin-left: 5px;
+            margin-right: 5px;
+        background: repeating-linear-gradient(-90deg, #00c3ff, #ffff1c);
+        border-bottom: 3px solid;
+        border-image: repeating-linear-gradient(45deg, #34e89e, #0f3443);
+    .likes{
+          
+            background-color : #141518;
+            width: 100%;
+            height: 30px;
+            padding-bottom: 10px;
+        ion-icon{
+            position: absolute;
+            height: 100%;
+            margin: auto;
+            vertical-align: middle;
+            top: 7px;
+            left: 5px;
+            }
+        h2{
+            position: absolute;
+            top: 7px;
+            left: 25px;
+            margin: auto;
+            color: azure;
+            vertical-align: middle;
+            height: 100%;
+            font-size: 0.9em;
+            }
+        }
+    }
+    .buttons{
+        width: 100%;
+        margin-top: 20px;
+        padding-bottom: 20px;
+        .download{
+            background: transparent;
+            width:40%;
+            margin-left:5%;
+            margin-right: 2.5%;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+
+            color: azure;
+            font-weight: 700;
+            border: 2px solid #86E388;
+            border-radius: 5px;
+            display: inline;
+        }
+        .download:active{
+            background: #86E388;
+        }
+        .share{
+            background: transparent;
+            display: inline;
+            width:40%;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            margin-right: 5%;
+            margin-left: 2.5%;
+            color: azure;
+            font-size: 1em;
+            font-weight: 700;
+            border: 2px solid #86E388;
+            border-radius: 5px;
+            float: right;
+
+
+        }
+        .share:active{
+             background: #86E388;
+
+        }
+    }
+    hr{
+    border-top: 2px solid azure !important;
+      width: 100% !important;
+      display: block !important;
+      visibility: visible !important;
+    }
+    .usercon{
+        position: relative;
+        padding-bottom: 120px;
+            
+    .user{
+         
+                padding-bottom: 40px;
+
+
+
+        img{
+            position: absolute;
+            top:5px;
+            left: 20px;
+            height: 80px;
+            width: 80px;
+            border: 2px solid #86E388;
+            border-radius: 40px;
+        }
+        h2{
+            position: absolute;
+            left: 120px;
+        }
+        p{
+            position: absolute;
+            left: 120px;
+            top: 40px;
+        }
+        button{
+            position: absolute;
+            top: 100px;
+            background: transparent;
+            text-align: center;
+            border: 2px solid #86E388;
+            width: 40%;
+            left: 30%;
+            padding: 10px;
+            color: azure;
+            font-size: 1em;
+            font-weight: 700;
+
+
+        }
+        button:active{
+            background: #86E388;
+        }
+        }
+    }
+    .empty{
+        height: 50px;
+        width: 100%;
+        background: transparent;
+    }
  
     .progress-outer {
         width: 96%;
         margin: 10px 2%;
-        padding: 3px;
+        padding: 1px;
         text-align: center;
-        background-color: #f4f4f4;
+        background: repeating-linear-gradient(-90deg, #00c3ff, #ffff1c);
         border: 1px solid #dcdcdc;
         color: #fff;
-        border-radius: 20px;
+        border-radius: 10px;
+        
     }
  
     .progress-inner {
@@ -16,8 +169,22 @@ page-wallpaper {
         white-space: nowrap;
         overflow: hidden;
         padding: 5px;
-        border-radius: 20px;
-        background-color: map-get($colors, primary);
+        color: azure;
+        border-radius: 10px;
+        background-color: #141518;
+    }
+    .spin{
+        position: absolute;
+        top: 30%;
+        bottom: 0;
+        margin: auto;
+        left: 30%;
+        width: 40% !important;
+        fill: #86E388 !important;
+        stroke: #ffff1c;
+        text-align: center;
+        vertical-align: middle;
+        zoom: 3 !important;
     }
  
 

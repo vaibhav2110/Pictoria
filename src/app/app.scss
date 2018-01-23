@@ -14,7 +14,60 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.head{
+    margin-top: 10%;
+    margin-left: 25%;
+    text-align: center;
+    width:50%;
+    border: 2px solid #86E388;
+    border-radius: 100%;
+    
+}
+ion-list:nth-child(2){
+        margin-top: 50px;
+        background: #fff;
+}
+.nothin{
+    border-top: 1px dotted #86E388;
+    margin-top: 30px;
+    height: 30px;
+    background: #141518 !important;
+
+}
+.menubtn{
+      background: #141518 !important;
+    ion-icon{
+        position: absolute;
+        top: 3px;
+        bottom: 0;
+        padding-right:15px;
+        font-size: 1em;
+        margin: auto;
+        vertical-align: middle;
+        justify-content: center;
+    }
+
+    
+
+}
+.menubtn:active{
+      background: #86E388 !important;
+
+    
+
+}
+.foot{
+    background: repeating-linear-gradient(-90deg, #00c3ff, #ffff1c);
+    position: absolute;
+    bottom: 0px;
+    padding: 5px;
+    color: #141518;
+    font-weight: 500;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
 .scroll-content {
-  background: #f7f7f7;
+  background: #141518;
 }
 

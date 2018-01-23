@@ -4,31 +4,42 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header color="#34373C">
 
-  <ion-navbar>
-    <ion-title>User</ion-title>
+  <ion-navbar color="#34373C" hide-nav-bar="true">
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <ion-item *ngIf="data">
-            <ion-avatar item-left>
-                <img src = "{{data.profile_image.medium}}" alt = "userimage">
-            </ion-avatar>
+    <ion-spinner name="dots" duration="1000"[hidden]="data"><p>Fetching Images</p></ion-spinner>
+    <div class="header" *ngIf="data">
+            <img class="propic" src = "{{data.profile_image.large}}" alt = "userimage">
             <h2> {{data.name}}</h2>
             <p> {{data.location}} </p>
-    </ion-item>
-    <ion-grid *ngIf="data">
-        <ion-row>
-            <ion-col col-4  *ngFor = "let photo of data.photos">
-                <ion-card>
-                    <img src = "{{photo.urls.regular}}" alt = "">
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+            <h5>"{{data.bio}}"</h5>
+            <h1>Followers: <b>{{data.followers_count}}</b></h1>
+            <h6>Downloads: <b>{{data.downloads}}</b></h6>
+
+    </div>
+    <ion-spinner class="load" name="dots" duration="1000"[hidden]="photos"><p>Fetching Images</p></ion-spinner>
+    <div *ngIf="photos">
+        <div class="gallery" *ngFor = "let image of photos" >
+            <div class="container" (click)="wall($event,image)">
+            <img src = "{{image.urls.regular}}" alt = "">
+            <div class="footer">
+            <ion-icon name = "heart" color = "danger"> </ion-icon>
+            <h2> {{image.likes}} </h2>
+                </div>
+                </div>
+        </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>   
+ </ion-infinite-scroll>
 
 </ion-content>

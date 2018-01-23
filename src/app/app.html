@@ -1,9 +1,14 @@
 <ion-split-pane>
   <ion-menu [content]="content">
     <ion-content>
-      <ion-list>
-        <button ion-item menuClose *ngFor="let item of menuItems" (click)="openPage(item)">{{ item.name }}</button>
+      <ion-list no-lines>
+          <img class="head" src="assets/icon/logo.png">
+          <div class="nothin"></div>
+        <button class="menubtn" ion-item menuClose *ngFor="let item of menuItems" (click)="openPage(item)">
+            <ion-icon [name]="item.icon" item-left></ion-icon>
+            {{ item.name }}</button>
       </ion-list>
+        <div class="foot">Powered by Unsplash</div>
     </ion-content>
   </ion-menu>
   <ion-nav [root]="rootPage" [rootParams]="rootParams" main #content></ion-nav>

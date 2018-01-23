@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unsplashprovider';
 import { CollectionPage } from '../collection/collection';
+import { StatusBar } from '@ionic-native/status-bar';
+
 @IonicPage()
 @Component({
   selector: 'page-page3',
@@ -14,14 +16,15 @@ export class Page3Page {
     pg: number = 1;
   rootNavCtrl: NavController;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private unsplashProvider: UnsplashproviderProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private unsplashProvider: UnsplashproviderProvider, private statusBar: StatusBar) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
 }
     
     ngOnInit(){
-        
+                this.statusBar.show();
+
         this.unsplashProvider.getCollections(this.pg)
-        .subscribe(photos => {this.data = photos;},
+        .subscribe(photos => {this.data = photos; },
                   errmess => this.errmess = <any>errmess);
            this.pg++;
     }

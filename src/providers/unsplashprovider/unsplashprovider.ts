@@ -25,34 +25,54 @@ export class UnsplashproviderProvider {
     
 
     getPhotos(pg: number): Observable<any>{
-        return this.http.get('https://api.unsplash.com/photos/?page='+pg+'&client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/photos/?page='+pg+'&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { return this.processHTTPMsgService.extractData(res); })
-        .catch(error => { return this.processHTTPMsgService.handleError(error);})
+        .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
     }
     getFeatured(pg: number): Observable<any>{
-        return this.http.get('https://api.unsplash.com/photos/curated/?page='+pg+'&client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/photos/curated/?page='+pg+'&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
         .catch(error => { return this.processHTTPMsgService.handleError(error);})
     }
     getDownload(id: string): Observable<any>{
-        return this.http.get('https://api.unsplash.com/photos/'+id+'/download/?client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/photos/'+id+'/download/?utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
         .catch(error => { return this.processHTTPMsgService.handleError(error);})
     }
     getCollections(pg: number): Observable<any>{
-        return this.http.get('https://api.unsplash.com/collections/featured/?page='+pg+'&client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/collections/featured/?page='+pg+'&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
         .catch(error => { return this.processHTTPMsgService.handleError(error);})
     }
     getCollection(id: string, pg: number): Observable<any>{
-        return this.http.get('https://api.unsplash.com/collections/'+id+'/photos/?page='+pg+'&client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/collections/'+id+'/photos/?page='+pg+'&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
         .catch(error => { return this.processHTTPMsgService.handleError(error);})
     }
     getUser(username: string):Observable<any>{
-        return this.http.get('https://api.unsplash.com/users/'+username+'/?client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/users/'+username+'/?utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
         map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
         .catch(error => { return this.processHTTPMsgService.handleError(error);})
+    }
+    getUserPhotos(username: string, pg: number):Observable<any>{
+        return this.http.get('https://api.unsplash.com/users/'+username+'/photos/?page='+pg+'&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
+        map(res => { console.log(res);return this.processHTTPMsgService.extractData(res); })
+        .catch(error => { return this.processHTTPMsgService.handleError(error);})
+    }
+    getNaturePhotos(pg: number): Observable<any>{
+        return this.http.get('https://api.unsplash.com/search/photos/?page='+pg+'&query=nature&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
+        map(res => { return this.processHTTPMsgService.extractData(res); })
+        .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
+    }
+    getSpacePhotos(pg: number): Observable<any>{
+        return this.http.get('https://api.unsplash.com/search/photos/?page='+pg+'&query=space&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
+        map(res => { return this.processHTTPMsgService.extractData(res); })
+        .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
+    }
+    getMinimalPhotos(pg: number): Observable<any>{
+        return this.http.get('https://api.unsplash.com/search/photos/?page='+pg+'&query=minimal&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
+        map(res => { return this.processHTTPMsgService.extractData(res); })
+        .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
     }
 
 }

@@ -20,17 +20,10 @@ export class ProcessHttpmsgProvider {
         let body = res.json();
         return body || { };
     }
-    public handleError(error: Response | any){
-       let errMsg: string;
-        if (error instanceof Response) {
-          const body = error.json() || '';
-          const err = body.error || JSON.stringify(body);
-          errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-          errMsg = error[0]+" , "+error[1];
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg); 
-        }
-
+    public handleError(error: any){
+        console.log(error);
+        let err = error._body;
+        return Observable.throw(err);
+    
+}
 }

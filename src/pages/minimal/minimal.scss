@@ -1,0 +1,105 @@
+page-minimal {
+    ion-content{
+        margin: 0px;
+        padding: 0px;
+        
+        ion-spinner{
+            position: relative;
+            width:20% !important;
+            height:20% !important;
+            text-align: center !important;
+            fill: #86E388 !important;
+            stroke: #86E388;
+            left: 40%;
+            
+        }
+        ion-card{
+            
+            padding: 0px;
+            
+            .header_container{
+                background: repeating-linear-gradient(-90deg, #00c3ff, #ffff1c);
+                border-top: 3px solid;
+                border-image: repeating-linear-gradient(45deg, #34e89e, #0f3443);
+        .header{
+            position: relative;
+            height: 45px;
+            background-color: #34373C;
+            img{
+                position: absolute;
+                height:50px;
+                width: 50px;
+                float: left;
+                top: 7px;
+                left: 10px;
+                border: 2px solid #86E388;
+                border-radius: 25px;
+                text-align: center;
+                justify-content: center;
+                vertical-align: middle;
+            }
+            
+            h2{
+                position: absolute;
+                top:10px;
+                left: 70px;
+                font-size: 0.9em;
+                font-weight: 500;
+                color: seagreen;
+                
+            }
+            p{
+                position: absolute;
+                top: 28px;
+                left: 70px;
+                color: azure;
+                font-size: 0.7em;
+                font-weight: 200;
+                
+            }
+            
+        }
+            
+                
+            }
+            .imgim{
+                height: 75px;
+                background-color: #34373C;
+            }
+            
+            .footer{
+                    position: relative;
+                    background-color: #34373C;
+                    height: 25px;
+                .likes{
+                    background: red;
+                    ion-icon{
+                        position: absolute;
+                        top:5px;
+                        left: 10px;
+                    }
+                    h2{
+                        position: absolute;
+                        top: 3px;
+                        left: 30px;
+                        color: azure;
+                        font-size: 0.8em;
+                    }
+                }
+                p{
+                    position: absolute;
+                    text-align: right;
+                    float: right;
+                    right: 10px;
+                    top: 5px;
+                    font-size: 0.8em;
+                    color: azure;
+                }
+                    
+                }
+    
+        }
+
+}
+
+}

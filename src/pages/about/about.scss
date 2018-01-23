@@ -1,0 +1,61 @@
+page-about {
+    .head{
+    margin-top: 10%;
+    margin-left: 25%;
+    text-align: center;
+    width:50%;
+    border: 2px solid #86E388;
+    border-radius: 100%;
+    
+}
+    .content{
+        border-bottom: 1px solid #86E388;
+        h1{
+            text-align: center;
+            color: #86E388;
+            font-size: 1.4em;
+        }
+        h5{
+            padding-left: 3px;
+            padding-right: 3px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: azure;
+
+        }
+        p{  padding-left: 3px;
+            padding-right: 3px;
+            text-align: center;
+            a{
+                text-decoration: none;
+                font-weight: 700;
+                color: #86E388;
+
+            }
+            ion-icon{
+                margin-left: 5px;
+                font-size: 0.9em;
+            }
+        }
+    }
+    .contact{
+        margin-top: 5%;
+        button{
+            width: 30%;
+            margin-left: 35%;
+            background-color: #86E388;
+            color: dimgrey;
+        }
+        p{
+            padding-left: 3px;
+            padding-right: 3px;
+            text-align: center;
+            line-height: 2em;
+        }
+        ion-icon{
+                margin-left: 5px;
+                font-size: 0.9em;
+            }
+    }
+}

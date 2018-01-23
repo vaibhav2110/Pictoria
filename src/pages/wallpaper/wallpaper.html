@@ -4,16 +4,19 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar hide-nav-bar="true">
-    <ion-title>Wallpaper</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
 <ion-content>
+    <ion-header no-border>
+
+  <ion-navbar  transparent hide-nav-bar="true">
+  </ion-navbar>
+
+</ion-header>
+    <img *ngIf="data" src = "{{data.urls.regular}}" alt = "">
+            <!--
+
     <ion-card *ngIf="data" hide-nav-bar="true">
         <ion-item>
             <ion-avatar item-left>
@@ -29,10 +32,32 @@
             <p item-right> {{data.updated_at}} </p>
         </ion-item>
     </ion-card>
-    <progress-bar [progress]="progress"></progress-bar>
-    <button ion-button (click)="download()">Download</button>
-    <button ion-button (click)="setWallpaper()">Set Wallpaper</button>
-        <button ion-button (click)="share()">Share</button>
+    -->
+    
+    <div class="container" no-border>
+    <div class="likes" *ngIf="data">
+            <ion-icon name = "heart" color = "danger"> </ion-icon>
+            <h2> {{data.likes}} </h2>
+    </div>
+        </div>
+    <progress-bar [hidden] = "!downloading" [progress]="progress"></progress-bar>
+    <div class="buttons">
+        <button class="download" (click)="download()">Download</button>
+        <!--<button ion-button (click)="setWallpaper()">Set Wallpaper</button>-->
+        <button class="share" (click)="share()">Share</button>
+    </div>
+    <hr>
+    <div class="usercon">
+    <div class="user" *ngIf="data">
+        <img src = "{{data.user.profile_image.large}}" alt = "userimage">
+        <h2> {{data.user.username}}/unsplash</h2>
+        <p> {{data.user.location}} </p>
+        <button (click)="openUser($event, data.user.username)">Visit Profile</button>
+    </div>
+        </div>
+    <div class="spin" *ngIf="spinning">
+        <ion-spinner name="dots" duration="1000"></ion-spinner>
+    </div>
 
 
 </ion-content>

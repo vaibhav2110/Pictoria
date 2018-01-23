@@ -29,8 +29,14 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #3F51B5,
-  yellow:     #FFEA00
+  yellow:     #FFEA00,
+  mygreen:    #86E388
 );
+$card-ios-background-color: slategray;
+$card-md-background-color: slategray;
+$card-wp-background-color: slategray;
+$spinner-md-dots-color : #86E388;
+$item-md-divider-background: transparent;
 
 
 // App iOS Variables
@@ -61,7 +67,7 @@ $colors: (
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import "ionic.theme.default";
+@import "ionic.theme.dark";
 
 
 // Ionicons

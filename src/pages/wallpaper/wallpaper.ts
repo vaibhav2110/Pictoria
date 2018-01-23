@@ -1,14 +1,20 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, Platform, NavParams ,AlertController} from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { StatusBar } from '@ionic-native/status-bar';
 import { File } from '@ionic-native/file';
 
 import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unsplashprovider';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { UserPage } from '../user/user';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 
 
 declare var cordova: any;
+
+
 /**
  * Generated class for the WallpaperPage page.
  *
@@ -27,10 +33,13 @@ export class WallpaperPage {
     url: any;
     errmess: string;
     progress: any = null;
+    downloading: boolean = false;
+    spinning: boolean = false;
+
     storageDirectory: string = "";
   constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform,public transfer: FileTransfer, private file: File,public alertCtrl: AlertController,public _zone: NgZone,public photoViewer: PhotoViewer,
                public social: SocialSharing,
-      private Unsplashprovider: UnsplashproviderProvider) {
+      private Unsplashprovider: UnsplashproviderProvider, private statusBar: StatusBar, private androidPermission: AndroidPermissions) {
       
       this.platform.ready().then(() => {
       // make sure this is on a device, not an emulation (e.g. chrome tools device mode)
@@ -42,7 +51,7 @@ export class WallpaperPage {
         this.storageDirectory = cordova.file.documentsDirectory;
       }
       else if(this.platform.is('android')) {
-        this.storageDirectory = cordova.file.externalRootDirectory+'/img/';
+        this.storageDirectory = cordova.file.externalRootDirectory+'/Pictoria/';
       }
       else {
         // exit otherwise, but you could add further types here e.g. Windows
@@ -51,8 +60,12 @@ export class WallpaperPage {
     });
   }
     ngOnInit(){
-        
+      this.androidPermission.checkPermission(this.androidPermission.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
+          result => {console.log('has peermission?', result.hasPermission); if(!result.hasPermission){
+              this.androidPermission.requestPermission(this.androidPermission.PERMISSION.WRITE_EXTERNAL_STORAGE);
+          }});
       this.data = this.navParams.get('image');
+      this.statusBar.hide(); 
       this.Unsplashprovider.getDownload(this.data.id).subscribe(url => {this.url = url.url; console.log(this.url);}, error => this.errmess = error);
       console.log(this.data.id);
 
@@ -60,18 +73,24 @@ export class WallpaperPage {
     }
 
   ionViewDidLoad() {
+      this.statusBar.hide();
     console.log('ionViewDidLoad WallpaperPage');
   }
+    ionViewDidLeave(){
+              this.statusBar.show();
+
+    }
   download(){
     this.platform.ready().then(() => {
+            this.downloading = true;
 
       const fileTransfer: FileTransferObject = this.transfer.create();
 
       const imageLocation = this.url;
 
-      fileTransfer.download(imageLocation, this.storageDirectory+'/myimg'+this.data.id+'.jpeg').then((entry) => {
+      fileTransfer.download(imageLocation, this.storageDirectory+'/Pictoria'+this.data.id+'.jpeg').then((entry) => {
           console.log(entry.toURL());
-                  window['plugins'].wallpaper.setImage('myimgz4eCfBAw3jk.jpeg');
+        window['plugins'].wallpaper.setImage(entry.toURL());
 
         const alertSuccess = this.alertCtrl.create({
           title: `Download Succeeded!`,
@@ -93,14 +112,22 @@ export class WallpaperPage {
 
       });
         fileTransfer.onProgress((progressEvent) => {
+      this.downloading = true;
       console.log(progressEvent);
       if (progressEvent.lengthComputable) {
           this._zone.run(()=>{
               this.progress = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+              if(this.progress == 100){
+                  this.downloading = false;
+              }
           console.log(this.progress);
           });
         
       }
+            else{
+                this.progress = 'Downloading';
+                console.log(this.progress);
+            }
             /*const alertDownloading = this.alertCtrl.create({
           title: `Downloading`,
          subTitle: 'ho rha h',
@@ -113,21 +140,34 @@ export class WallpaperPage {
 
   }
     share(){
+        this.spinning = true;
+        console.log(this.spinning);
         this.platform.ready()
         .then(()=>{
-            this.social.share("Wallpaper",null,this.url,null)
+            this.social.share("Wallpaper","Downloaded from Pictoria",this.url,"https://github.com/vaibhav2110")
             .then((data)=>
                  {
+                this.spinning = false;
                 console.log('Shared');
             })
             .catch((err)=>{
-                console.log('boooor me');
+                this.spinning = false;
+                console.log('Failed');
             });
         });
   
 }
     setWallpaper(){
-        window['plugins'].wallpaper.setImageHttp(cordova.file.externalRootDirectory+'image.jpg');
+        console.log('pressed');
+        window['plugins'].wallpaper.setImage(this.url, (error)=>{
+            console.log(error);
+        });
+    }
+    openUser(event, username){
+        this.navCtrl.push(UserPage, {
+            username
+        });
+        
     }
 }
                                

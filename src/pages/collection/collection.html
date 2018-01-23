@@ -1,20 +1,26 @@
 
 
 <ion-content>
+    <ion-spinner name="dots" duration="1000"[hidden]="data"><p>Fetching Images</p></ion-spinner>
     <ion-card *ngFor = "let image of collections" >
-        <ion-item (click)= "getUsers($event, image.user.username)">
+        <div class="header_container">
+        
+        <div (click)="getUsers($event, image.user.username)" class="header">
             <ion-avatar item-left>
-                <img src = "{{image.user.profile_image.small}}" alt = "userimage">
+                <img src = "{{image.user.profile_image.medium}}" alt = "userimage">
             </ion-avatar>
-            <h2> {{image.user.username}}</h2>
+            <h2> {{image.user.username}}/unsplash</h2>
             <p> {{image.user.location}} </p>
-        </ion-item>
-        <img src = "{{image.urls.regular}}" alt = "" (click)="selected($event, image)">
-        <ion-item>
-            <ion-icon name = "heart" color = "danger" item-left> </ion-icon>
+        </div>
+           </div>
+       <img src = "{{image.urls.regular}}" alt = "" (click)="selected($event, image)">
+        <div class="footer">
+            <div class="likes">
+            <ion-icon name = "heart" color = "danger"> </ion-icon>
             <h2> {{image.likes}} </h2>
-            <p item-right> {{image.updated_at}} </p>
-        </ion-item>
+            </div>
+            <p> {{image.updated_at | date: 'MMM d,y'}} </p>
+       </div>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content

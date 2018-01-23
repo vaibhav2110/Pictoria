@@ -1,11 +1,22 @@
 <ion-content>
+    <ion-spinner name="dots" duration="1000"[hidden]="data">Loading</ion-spinner>
   <ion-card *ngFor = "let image of data" (click)="selected($event, image)">
-        <ion-item>
-            
-            <h2> {{image.title}}</h2>
-            <p> {{image.description}} </p>
-        </ion-item>
+      <div class="header_container">
+        <div class="header">
+            <p> {{image.title}} </p>
+        </div>
+    </div>
+        <div class="placeholder" *ngIf="!image.cover_photo">
+            This is a placeholder
+      </div>
         <img src = "{{image.cover_photo.urls.regular}}" alt = "">
+      <div class="footer">
+            <div class="photos">
+            <ion-icon name = "ios-images-outline"> </ion-icon>
+            <h2> {{image.total_photos}} </h2>
+            </div>
+            <p> {{image.updated_at | date: 'MMM d,y'}} </p>
+       </div>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content

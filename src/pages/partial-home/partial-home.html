@@ -1,9 +1,9 @@
 <ion-header no-shadow no-border>
-  <ion-navbar color="#66666">
-    <button ion-button menuToggle color="yellow">
+  <ion-navbar color="#34373C">
+    <button ion-button menuToggle color="secondary">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-title>Pictoria</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,9 +11,9 @@
 <ion-content>
 
     
-    <super-tabs style="height: 100%" [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" toolbarBackground="dark" indicatorColor="yellow">
-      <super-tab [root]="page1" [title]="showTitles? '  NEW  ' : ''" ></super-tab>
-      <super-tab [root]="page2" [title]="showTitles? 'Featured' : ''" ></super-tab>
+    <super-tabs style="height: 100%" [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="#34373C" toolbarBackground="#34373C" indicatorColor="mygreen">
+      <super-tab [root]="page1" [title]="showTitles? '  New  ' : ''" ></super-tab>
+      <super-tab [root]="page2" [title]="showTitles? 'Best Pick' : ''" ></super-tab>
       <super-tab [root]="page3" [title]="showTitles? 'Collections' : ''"></super-tab>
     </super-tabs>
 

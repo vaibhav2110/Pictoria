@@ -18,7 +18,9 @@ import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unspl
 export class UserPage {
     username: any;
     data: any;
+    photos: any;
     errormsg: any;
+    pg: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private unsplashProvider: UnsplashproviderProvider) {
           this.username = navParams.get('username');
@@ -29,6 +31,23 @@ export class UserPage {
         this.unsplashProvider.getUser(this.username)
         .subscribe(photos => {console.log(photos);this.data = photos;},
                   errmess => this.errormsg = <any>errmess);
+        this.unsplashProvider.getUserPhotos(this.username, this.pg)
+        .subscribe(photos => {console.log(photos);this.photos = photos;},
+                  errmess => this.errormsg = <any>errmess);
+        this.pg++;
+    }
+    doInfinite(infiniteScroll){
+        this.unsplashProvider.getUserPhotos(this.username, this.pg)
+        .subscribe(photos => {console.log(photos);for(let items of photos){this.photos = this.photos.concat([items]);}
+                              infiniteScroll.complete();},
+                  errmess => {this.errormsg = <any>errmess;infiniteScroll.complete();});
+        this.pg++;
+        
+    }
+    wall(event, image){
+        this.navCtrl.push(WallpaperPage,{
+            image
+        });
     }
 
   ionViewDidLoad() {

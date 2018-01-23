@@ -18,7 +18,9 @@ import { File } from '@ionic-native/file';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { HeaderScrollerDirective } from '../directives/header-scroller/header-scroller';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { HeaderScrollerDirective } from '../directives/header-scroller/header-sc
     SplashScreen,
       PhotoViewer,
       SocialSharing,
+      AndroidPermissions,
+      EmailComposer,
     StatusBar,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UnsplashproviderProvider,

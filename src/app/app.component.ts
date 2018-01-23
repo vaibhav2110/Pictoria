@@ -2,10 +2,15 @@ import {Component, ViewChild} from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
+import { AboutPage } from '../pages/about/about';
+
 import { PartialHomePage } from "../pages/partial-home/partial-home";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { NaturePage } from '../pages/nature/nature';
+import { SpacePage } from '../pages/space/space';
+import { MinimalPage } from '../pages/minimal/minimal';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,48 +24,48 @@ export class MyApp {
 
   menuItems: any[] = [
     {
-      name: 'Full Height',
-      page: 'HomePage',
-      params: { type: 'all' }
-    },
-    {
-      name: 'Full Height - Title only',
-      page: 'HomePage',
-      params: { type: 'titles-only' }
-    },
-    {
-      name: 'Full height - Icons only',
-      page: 'HomePage',
-      params: { type: 'icons-only' }
-    },
-    {
-      name: 'Partial Height',
+      name: 'Home',
+      icon: 'home',
       page: 'PartialHomePage',
       params: { type: 'all' }
     },
-    {
-      name: 'Partial Height - Title only',
-      page: 'PartialHomePage',
-      params: { type: 'titles-only' }
+      {
+      name: 'Nature',
+      icon: 'ios-leaf',
+      page: 'NaturePage',
+      params: { type: 'all' }
     },
-    {
-      name: 'Partial Height - Icons only',
-      page: 'PartialHomePage',
-      params: { type: 'icons-only' }
+      {
+      name: 'Space',
+      icon: 'planet',
+      page: 'SpacePage',
+      params: { type: 'all' }
+    },
+      {
+      name: 'Minimal',
+      icon: 'bonfire',
+      page: 'MinimalPage',
+      params: { type: 'all' }
+    },
+      {
+      name: 'About',
+      icon: 'help',
+      page: 'AboutPage',
+      params: { type: 'all' }
     }
   ];
 
   constructor(platform: Platform, splashScreen: SplashScreen, statusBar: StatusBar) {
-    this.rootPage = this.menuItems[4].page;
-    this.rootParams = this.menuItems[4].params;
+    this.rootPage = this.menuItems[0].page;
+    this.rootParams = this.menuItems[0].params;
     platform.ready().then(() => {
       splashScreen.hide();
-      statusBar.backgroundColorByHexString('#3949AB')
+      statusBar.backgroundColorByHexString('#34373C')
     });
   }
 
   openPage(page) {
-    this.nav.setRoot(page.page, page.params);
+    this.nav.push(page.page, page.params);
   }
 
 }

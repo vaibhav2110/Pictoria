@@ -4,6 +4,8 @@ import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unspl
 import { WallpaperPage } from '../wallpaper/wallpaper';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { UserPage } from '../user/user';
+import { StatusBar } from '@ionic-native/status-bar';
+
 
 @IonicPage()
 @Component({
@@ -15,21 +17,22 @@ export class Page1Page {
   rootNavCtrl: NavController;
   data: any;
   data2: any;
-  errormsg: string;
+  errormsg: any;
   pg: number = 1;
     
   
 
-  constructor(public navCtrl: NavController, public socialSharing: SocialSharing,public navParams: NavParams, private loadingCtrl: LoadingController,private unsplashProvider: UnsplashproviderProvider) {
+  constructor(public navCtrl: NavController, public socialSharing: SocialSharing,public navParams: NavParams, private loadingCtrl: LoadingController,private unsplashProvider: UnsplashproviderProvider, private statusBar: StatusBar) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
       
   }
     
     ngOnInit(){
-        
+                this.statusBar.show();
+
         this.unsplashProvider.getPhotos(this.pg)
         .subscribe(photos => {console.log(photos);this.data = photos;},
-                  errmess => this.errormsg = <any>errmess);
+                  errmess => {console.log(errmess);this.errormsg = <any>errmess});
         this.pg++;
     }
     doInfinite(infiniteScroll){
@@ -46,6 +49,8 @@ export class Page1Page {
   }
 
   ionViewDidLoad() {
+                            this.statusBar.show();
+
     console.log('[1] did looad fired');
   }
 
@@ -54,18 +59,11 @@ export class Page1Page {
   }
 
   ionViewDidEnter() {
+                      this.statusBar.show();
+
     console.log('[1] did enter fired');
   }
-    share(){
-        this.socialSharing.shareViaWhatsApp("yo",null,null)
-            .then(()=>
-                 {
-                console.log('Shared');
-            })
-            .catch((err)=>{
-                console.log(err);
-            });
-    }
+    
     selected(event, image){
          this.rootNavCtrl.push(WallpaperPage,{
             image

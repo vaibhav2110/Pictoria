@@ -1,3 +1,137 @@
 page-user {
+        
+    ion-content{
+        ion-spinner{
+            position: relative;
+            width:20% !important;
+            height:20% !important;
+            text-align: center !important;
+            fill: #86E388 !important;
+            stroke: #86E388;
+            left: 40%;
+            
+        }
+    
+        .header{
+            position: relative;
+            width: 100%;
+            height: 48%;
+            background-color : #2a2a2a;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            .propic{
+                position: absolute;
+                top: 3%;
+                width: 30%;
+                left: 35%;
+                text-align: center;
+                margin: auto;
+                border: 2px solid #86E388;
+                border-radius: 100%;
+                z-index: 9999;
+                box-shadow: 0 3px 4px 0 rgba(255, 255, 255, 0.1);
+            }
+            h2{
+                position: absolute;
+                margin-top: 36%;
+                text-align: center;
+                right: 0px;
+                left: 0px;
+                color: azure;
+                font-size: 1.1em;
+                font-weight: 600;
+            }
+            p{
+                position: absolute;
+                margin-top: 42%;
+                text-align: center;
+                right: 0px;
+                left: 0px;
+                color: azure;
+                font-size: 0.8em;
+                font-weight: 200;
+            }
+            h5{
+                position: absolute;
+                margin-top: 48%;
+                text-align: center;
+                right: 0px;
+                left: 0px;
+                height: 30px;
+                text-overflow: ellipsis;
+                overflow-y: scroll;
+                font-size: 0.8em;
+                font-weight: 400;
+            }
+            h1{
+                position: absolute;
+                margin-top: 63%;
+                left: 15%;
+                color: #86E388;
+                font-size: 0.85em;
+                font-weight: 300;
+                b{
+                    color: azure;
+                }
+            }
+            
+            h6{
+                position: absolute;
+                margin-top: 63%;
+                right: 15%;
+                color: #86E388;
+                font-size: 0.85em;
+                font-weight: 300;
+                b{
+                    color: azure;
+                }
+            }
+        }
+        .load{
+            position: absolute;
+            margin-top: 60%;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        .gallery{
+            .container{
+                width: 40%;
+                margin-left: 5%;
+                margin-right: 5%;
+                margin-top: 5%;
+                float: left;
+                img{
+                    border-radius: 5px;
+                    box-shadow: 0 9px 50px 0 rgba(255, 255, 255, 0.2);
+                }
+                .footer{
+                    background-color: palegreen;
+                    width: 100%;
+                    height: 30px;
+                    position: relative;
+                    top: -33px;
+                    opacity: 0.6;
+                ion-icon{
+                    position: absolute;
+                    opacity: 1 !important;
+                    top: 25%;
+                    left: 5%;
+                    width: 10%;
+                }
+                h2{
+                    position: absolute;
+                    opacity: 1 !important;
+                    color: dimgrey;
+                    top: -35%;
+                    left: 16%;
+                    width: 50%;
+                    font-size: 0.9em;
+                    font-weight: 800;
 
-}
+
+                }
+          }
+        }
+      }
+    }
+  }

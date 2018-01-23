@@ -3,6 +3,8 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { UnsplashproviderProvider } from '../../providers/unsplashprovider/unsplashprovider';
 import { WallpaperPage } from '../wallpaper/wallpaper';
 import { UserPage } from '../user/user';
+import { StatusBar } from '@ionic-native/status-bar';
+
 
 @IonicPage()
 @Component({
@@ -17,11 +19,11 @@ export class Page2Page {
 
   rootNavCtrl: NavController;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private unsplashProvider: UnsplashproviderProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private unsplashProvider: UnsplashproviderProvider, private statusBar: StatusBar) {
   this.rootNavCtrl = navParams.get('rootNavCtrl');}
     
        ngOnInit(){
-        
+        this.statusBar.show();
         this.unsplashProvider.getFeatured(this.pg)
         .subscribe(photos => {this.data = photos;},
                   errmess => this.errmess = <any>errmess);
