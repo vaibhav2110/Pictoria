@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class UnsplashproviderProvider {
     
-    clientId: string = '4d086911b1afc564d9cb68edea9559906b900334b782fb14ab69782998f5b6fa';
+    clientId: string = '658531b864e2ec17daacb31466122437addb53efcdabc5288a25725329c1cb1e';
     pageNo: number = 1
   constructor(public http: Http,
               private processHTTPMsgService: ProcessHttpmsgProvider) {
@@ -70,7 +70,7 @@ export class UnsplashproviderProvider {
         .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
     }
     getMinimalPhotos(pg: number): Observable<any>{
-        return this.http.get('https://api.unsplash.com/search/photos/?page='+pg+'&query=minimal&utm_source=wallpaper&utm_medium=referral&client_id='+this.clientId).
+        return this.http.get('https://api.unsplash.com/search/photos/?page='+pg+'&query=minimal&client_id='+this.clientId).
         map(res => { return this.processHTTPMsgService.extractData(res); })
         .catch(error => { console.log(error); return this.processHTTPMsgService.handleError(error);})
     }
