@@ -16,13 +16,15 @@ import {HttpModule} from '@angular/http';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { FileOpener } from '@ionic-native/file-opener';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { HeaderScrollerDirective } from '../directives/header-scroller/header-scroller';
 import { EmailComposer } from '@ionic-native/email-composer';
-
-
+import { Base64 } from '@ionic-native/base64';
+import { AdMobFree } from '@ionic-native/admob-free';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 @NgModule({
   declarations: [
     MyApp,
@@ -52,6 +54,10 @@ import { EmailComposer } from '@ionic-native/email-composer';
       SocialSharing,
       AndroidPermissions,
       EmailComposer,
+      FileOpener,
+      AdMobFree,
+      ScreenOrientation,
+      Base64,
     StatusBar,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     UnsplashproviderProvider,

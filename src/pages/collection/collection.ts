@@ -32,7 +32,7 @@ export class CollectionPage {
   }
     
     ngOnInit(){
-                this.statusBar.show();
+         this.statusBar.show();
 
         this.data = this.navParams.get('image');
         console.log(this.data.id);
@@ -44,8 +44,8 @@ export class CollectionPage {
     }
     doInfinite(infiniteScroll){
         this.Unsplashprovider.getCollection(this.data.id,this.pg)
-        .subscribe(photos => {console.log(photos);for(let items of photos){this.data = this.data.concat([items]);}
-                              console.log(this.data);infiniteScroll.complete();},
+        .subscribe(photos => {console.log(photos);for(let items of photos){this.collections = this.collections.concat([items]);}
+                              console.log(this.collections);infiniteScroll.complete();},
                   errmess => {this.errmess = <any>errmess;infiniteScroll.complete();});
         this.pg++;
         

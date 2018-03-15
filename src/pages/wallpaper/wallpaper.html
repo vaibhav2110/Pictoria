@@ -41,22 +41,32 @@
     </div>
         </div>
     <progress-bar [hidden] = "!downloading" [progress]="progress"></progress-bar>
+    <div [hidden] = "!downloading" class="buttons">
+        <button class="cancel" (click)="cancel()">Cancel</button>
+        <!--<button ion-button (click)="setWallpaper()">Set Wallpaper</button>-->
+    </div>
     <div class="buttons">
         <button class="download" (click)="download()">Download</button>
         <!--<button ion-button (click)="setWallpaper()">Set Wallpaper</button>-->
         <button class="share" (click)="share()">Share</button>
     </div>
+    <div class="buttons">
+        <button class="set" (click)="set()">Set Wallpaper</button>
+        <!--<button ion-button (click)="setWallpaper()">Set Wallpaper</button>-->
+        
+    </div>
     <hr>
     <div class="usercon">
     <div class="user" *ngIf="data">
         <img src = "{{data.user.profile_image.large}}" alt = "userimage">
-        <h2> {{data.user.username}}/unsplash</h2>
+        <h2> {{data.user.username}}</h2>
         <p> {{data.user.location}} </p>
         <button (click)="openUser($event, data.user.username)">Visit Profile</button>
     </div>
         </div>
     <div class="spin" *ngIf="spinning">
-        <ion-spinner name="dots" duration="1000"></ion-spinner>
+        <ion-spinner name="circles" duration="1000"></ion-spinner>
+        <h1>Please Wait</h1>
     </div>
 
 

@@ -5,7 +5,7 @@ import { WallpaperPage } from '../wallpaper/wallpaper';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { UserPage } from '../user/user';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @IonicPage()
 @Component({
@@ -22,14 +22,28 @@ export class Page1Page {
     
   
 
-  constructor(public navCtrl: NavController, public socialSharing: SocialSharing,public navParams: NavParams, private loadingCtrl: LoadingController,private unsplashProvider: UnsplashproviderProvider, private statusBar: StatusBar) {
+  constructor(public navCtrl: NavController, public socialSharing: SocialSharing,public navParams: NavParams, private loadingCtrl: LoadingController,private unsplashProvider: UnsplashproviderProvider, private admobFree: AdMobFree, private statusBar: StatusBar) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
       
   }
     
     ngOnInit(){
                 this.statusBar.show();
+         const bannerConfig: AdMobFreeBannerConfig = {
+         // add your config here
+         // for the sake of this example we will just use the test config
+         isTesting: false,
+         id: 'ca-app-pub-2929147522219560/6947435351',
+         autoShow: true
+        };
+        this.admobFree.banner.config(bannerConfig);
 
+        this.admobFree.banner.prepare()
+          .then(() => {
+            // banner Ad is ready
+            // if we set autoShow to false, then we will need to call the show method here
+          })
+          .catch(e => console.log(e));
         this.unsplashProvider.getPhotos(this.pg)
         .subscribe(photos => {console.log(photos);this.data = photos;},
                   errmess => {console.log(errmess);this.errormsg = <any>errmess});

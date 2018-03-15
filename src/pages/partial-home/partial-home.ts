@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import { NgModule } from '@angular/core';
 import { Content } from 'ionic-angular';
 import { NavController, NavParams, IonicPage} from 'ionic-angular';
-
+import { AdMobFree,AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 @IonicPage({
   segment: 'partial-home/:type'
 })
@@ -22,7 +22,7 @@ export class PartialHomePage {
   showTitles: boolean = true;
   pageTitle: string = 'Partial Home';
 
-  constructor(public navCtrl: NavController, private navParams: NavParams) {
+  constructor(public navCtrl: NavController, private navParams: NavParams,private admobFree: AdMobFree) {
     const type = navParams.get('type');
     switch (type) {
       case 'icons-only':
@@ -36,5 +36,9 @@ export class PartialHomePage {
         break;
     }
   }
+    ngOnInit(){
+       
+        console.log('entered');
+    }
 
 }

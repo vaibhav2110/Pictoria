@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { PartialHomePage } from "../pages/partial-home/partial-home";
 
@@ -55,7 +56,8 @@ export class MyApp {
     }
   ];
 
-  constructor(platform: Platform, splashScreen: SplashScreen, statusBar: StatusBar) {
+  constructor(platform: Platform, splashScreen: SplashScreen, statusBar: StatusBar,private screenOrientation: ScreenOrientation) {
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.rootPage = this.menuItems[0].page;
     this.rootParams = this.menuItems[0].params;
     platform.ready().then(() => {
