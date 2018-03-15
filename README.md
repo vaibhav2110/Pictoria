@@ -13,8 +13,5 @@ An android app where you can find millions of **HQ** stock photos.
 |--|--|
 | ![enter image description here](https://github.com/vaibhav2110/Pictoria/blob/master/screenshots/screen4.png?raw=true) | ![enter image description here](https://github.com/vaibhav2110/Pictoria/blob/master/screenshots/screen5.png?raw=true) |
 
-|![enter image description here](https://github.com/vaibhav2110/Pictoria/blob/master/screenshots/screen6.png?raw=true)  | ![enter image description here](https://github.com/vaibhav2110/Pictoria/blob/master/screenshots/screen2.png?raw=true) |
-|--|--|
-|  |  |
 
 All images are provided by [Unsplash](http://www.unsplash.com)
